@@ -3,7 +3,7 @@ import MonacoEditor from "react-monaco-editor";
 import "../styles/codeeditor.css";
 import refreshButton1x from "../images/refresh-button/refresh.png";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import plus from '../images/plus.svg';
+import plus from "../images/plus.svg";
 
 class CodeEditor extends Component {
   constructor(props) {
@@ -13,31 +13,35 @@ class CodeEditor extends Component {
       refreshButton: {
         backgroundColor: "#1f1f1f",
       },
-      noOfTabs: 1
+      noOfTabs: 1,
     };
   }
 
   editorDidMount = (editor, monaco) => {
     editor.focus();
   };
+
   onChange = async (newValue, e) => {
     this.codeString = newValue;
     if (e.versionId === 2) {
       await this.setState({ refreshButton: { backgroundColor: "#66d68d" } });
     }
   };
+
   saveCodeChanges = async () => {
     this.props.saveCode(this.codeString);
     await this.setState({ refreshButton: { backgroundColor: "#1f1f1f" } });
   };
+
   addTab = async () => {
     let currentNumOfTabs = this.state.noOfTabs;
     await this.setState({ noOfTabs: currentNumOfTabs + 1 });
   };
+
   closeTab = async () => {
     let currentNumOfTabs = this.state.noOfTabs;
     await this.setState({ noOfTabs: currentNumOfTabs - 1 });
-  }
+  };
 
   render() {
     const code = this.props.code;
@@ -55,13 +59,13 @@ class CodeEditor extends Component {
         enabled: true,
       },
       scrollBeyondLastLine: false,
-      renderLineHighlight: "none"
+      renderLineHighlight: "none",
     };
     let tabs = [];
     let tabsNames = [];
     let totalTabs = this.state.noOfTabs;
     for (let i = 2; i <= totalTabs; i++) {
-      let value = "/* This is an empty tab.*/"
+      let value = "/* This is an empty tab.*/";
       tabs.push(
         <TabPanel key={i}>
           <MonacoEditor
@@ -69,15 +73,19 @@ class CodeEditor extends Component {
             height="581"
             language="javascript"
             theme="vs-dark"
-            value= {value}
+            value={value}
             options={options}
           />
         </TabPanel>
       );
       tabsNames.push(
         <Tab className="tabTitleBox" key={i}>
-          <p className="tabTitle title" style={{paddingRight: '3px'}}>tab.js</p>
-          <button className="close" onClick={this.closeTab}>x</button>
+          <p className="tabTitle title" style={{ paddingRight: "3px" }}>
+            tab.js
+          </p>
+          <button className="close" onClick={this.closeTab}>
+            x
+          </button>
         </Tab>
       );
     }
@@ -99,7 +107,7 @@ class CodeEditor extends Component {
               </Tab>
               {tabsNames}
               <button onClick={this.addTab} className="plusBtn">
-                <img src={plus} alt="plusButton"/>
+                <img src={plus} alt="plusButton" />
               </button>
             </TabList>
             <hr className="hl" />

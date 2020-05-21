@@ -11,9 +11,11 @@ class Playground extends Component {
     };
     this.saveCode = this.saveCode.bind(this);
   }
+
   saveCode = async (code) => {
     await this.setState({ code: code });
   };
+
   render() {
     return (
       <div className="row">

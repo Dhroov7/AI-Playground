@@ -1,35 +1,53 @@
 import React, { Component } from "react";
 import "../styles/chatbot.css";
 import Chat from "./chat";
-import axios from 'axios';
+import axios from "axios";
 
 class ChatBot extends Component {
   state = {
     userMessage: "",
     chat: [],
-    chatBotResponse: ''
+    chatBotResponse: "",
   };
 
   handleSubmit = async (e) => {
     if (e.key === "Enter") {
       if (this.state.userMessage) {
         e.preventDefault();
-        await this.setState({ chat: this.state.chat.concat({sender: 'user', value: this.state.userMessage}), userMessage: "" });
-        let result = this.createFunctionExpression(this.props.code, this.state.chat[this.state.chat.length - 1].value);
-        await this.setState({chat: this.state.chat.concat({sender: 'bot', value: '...'})});
-        console.log('here')
-        let response = await axios.post('https://shrouded-oasis-94153.herokuapp.com/', {
-          code: result
+        await this.setState({
+          chat: this.state.chat.concat({
+            sender: "user",
+            value: this.state.userMessage,
+          }),
+          userMessage: "",
         });
+        let result = this.createFunctionExpression(
+          this.props.code,
+          this.state.chat[this.state.chat.length - 1].value
+        );
+        await this.setState({
+          chat: this.state.chat.concat({ sender: "bot", value: "..." }),
+        });
+        console.log("here");
+        let response = await axios.post(
+          "https://shrouded-oasis-94153.herokuapp.com/",
+          {
+            code: result,
+          }
+        );
         let newChat = this.state.chat;
         newChat.pop();
-        await this.setState({chat: newChat});
-        await this.setState({ chat: this.state.chat.concat({sender: 'bot', value: response.data})});
+        await this.setState({ chat: newChat });
+        await this.setState({
+          chat: this.state.chat.concat({ sender: "bot", value: response.data }),
+        });
       }
     }
   };
 
+  // Function for converting function to IIFE.
   createFunctionExpression = (code, param) => {
+    // Added splice function for strings.
     String.prototype.splice = function (start, delCount, newSubStr) {
       return (
         this.slice(0, start) +
@@ -38,7 +56,7 @@ class ChatBot extends Component {
       );
     };
     let startIndexOfFunc = code.indexOf("function");
-    code = code.splice(startIndexOfFunc, 0, '(');
+    code = code.splice(startIndexOfFunc, 0, "(");
     let endIndexOfFunc = code.lastIndexOf("}");
     code = code.splice(endIndexOfFunc + 1, 0, `)('${param}')`);
     return code;
