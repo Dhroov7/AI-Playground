@@ -1,0 +1,97 @@
+@font-face {
+  font-family: Quicksand;
+  src: local(Quicksand-Regular),
+    url(../fonts/Quicksand/quicksand-regular.woff2) format("woff2"),
+    url(../fonts/Quicksand/Quicksand-Regular.woff) format("woff"),
+    url(../fonts/Quicksand/Quicksand-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+.AI-playground {
+  opacity: 0.8;
+  font-family: AmericanTypewriter;
+  font-size: 18px;
+  font-weight: lighter;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+  margin-left: 36px;
+  display: inline-block;
+}
+
+.Learn-AI {
+  font-family: Quicksand;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #c6c6c6;
+  display: inline-block;
+}
+
+.Docs {
+  font-family: Quicksand;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #c6c6c6;
+  display: inline-block;
+}
+.Mask {
+  width: 20px;
+  height: 20px;
+  border: solid 1px var(--pinkish-grey);
+  background-color: #d8d8d8;
+  border-radius: 50%;
+  display: inline-block;
+}
+.Account {
+  font-family: Quicksand;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #c6c6c6;
+  display: inline-block;
+  margin-left: 9px;
+  margin-right: 10.7px;
+}
+.Shape {
+  width: 12px;
+  height: 7.4px;
+  object-fit: contain;
+}
+
+.NavBar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline;
+}
+
+.userPhoto {
+  width: 20px;
+  height: 18.7px;
+  border-radius: 50%;
+}
+
+.noPadding {
+  padding: 0px !important;
+}

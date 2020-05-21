@@ -1,0 +1,12 @@
+.vl {
+  height: 650px;
+  opacity: 0.09;
+  border: solid 2px #ffffff;
+  position: absolute;
+  top: 18px;
+  left: -40px;
+}
+
+.nopadding {
+  padding: 0px !important;
+}

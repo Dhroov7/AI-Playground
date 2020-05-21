@@ -1,0 +1,59 @@
+@font-face {
+  font-family: Quicksand;
+  src: local(Quicksand-Regular),
+    url(../fonts/Quicksand/quicksand-regular.woff2) format("woff2"),
+    url(../fonts/Quicksand/Quicksand-Regular.woff) format("woff"),
+    url(../fonts/Quicksand/Quicksand-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+.container {
+  width: 528px;
+  height: 400px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.08);
+  background-color: #1f1f1f;
+  margin-bottom: 34px;
+}
+
+.textBox {
+  width: 524px;
+  height: 72px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.08);
+  background-color: #1f1f1f;
+  border-color: #1f1f1f;
+}
+
+input,
+select,
+textarea {
+  font-family: Quicksand;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #a9a9a9;
+}
+
+.textBox::placeholder {
+  font-family: Quicksand;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #a9a9a9;
+  padding-left: 33px;
+}
+
+.chatBot {
+  position: absolute;
+  top: 117px;
+  right: 70px;
+}

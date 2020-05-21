@@ -1,0 +1,111 @@
+@font-face {
+  font-family: Quicksand;
+  src: local(Quicksand-Regular),
+    url(../fonts/Quicksand/quicksand-regular.woff2) format("woff2"),
+    url(../fonts/Quicksand/Quicksand-Regular.woff) format("woff"),
+    url(../fonts/Quicksand/Quicksand-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+.refresh {
+  width: 11px;
+  height: 12px;
+  object-fit: contain;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.code-editor {
+  position: absolute;
+  top: 30px;
+}
+
+.saveChangesBtn {
+  width: 132px;
+  height: 30px;
+  border-radius: 4px;
+  position: absolute;
+  left: 420px;
+  border-color: #1f1f1f;
+}
+
+.btnText {
+  font-family: Quicksand;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+  display: inline-block;
+}
+
+.tabTitle {
+  width: 43px;
+  height: 15px;
+  font-family: Quicksand;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #c6c6c6;
+  padding-top: 5px;
+  display: inline-block;
+}
+
+.tabList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tabTitleBox {
+  display: inline-block;
+  width: 72px;
+  height: 31px;
+  border-radius: 4px;
+  border: solid 2px #1f1f1f;
+  background-color: #161616;
+  border-bottom: none;
+}
+
+.hl {
+  width: 129%;
+  opacity: 0.09;
+  border: solid 2px #ffffff;
+  margin: 0;
+  z-index: -1;
+}
+
+.react-tabs__tab--selected {
+  border: solid 2px #2b2b2b;
+  border-bottom: none;
+  z-index: 1;
+}
+
+.plusBtn {
+  background-color: #161616;
+  border: none;
+}
+
+.close {
+  font-family: Quicksand;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #c6c6c6;
+  display: inline-block;
+  margin-right: 5px;
+  margin-top: 5px;
+}
