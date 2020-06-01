@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CodeEditor from "./codeeditor";
 import ChatBot from "./chatbot";
 import "../styles/playground.css";
+import { Container, Row, Col } from "react-bootstrap";
 
 class Playground extends Component {
   constructor() {
@@ -18,17 +19,19 @@ class Playground extends Component {
 
   render() {
     return (
-      <div className="row">
-        <div className="col-6 noPadding">
-          <CodeEditor saveCode={this.saveCode} code={this.state.code} />
-        </div>
-        <div className="col-1 noPadding">
-          <div className="vl"></div>
-        </div>
-        <div className="col-5 noPadding">
-          <ChatBot code={this.state.code} />
-        </div>
-      </div>
+      <Container fluid className="removePadding h-100">
+        <Row className="h-100">
+          <Col sm={5} style={{paddingRight: '0px'}} className="mt-1">
+            <CodeEditor saveCode={this.saveCode} code={this.state.code} />
+          </Col>
+          <Col sm={1} className="removePadding">
+            <div className="vl"></div>
+          </Col>
+          <Col sm={5} style={{marginTop: '10%'}}>
+            <ChatBot code={this.state.code} />
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

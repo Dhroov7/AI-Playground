@@ -4,16 +4,21 @@ import Chat from "./chat";
 import axios from "axios";
 
 class ChatBot extends Component {
-  state = {
-    userMessage: "",
-    chat: [],
-    chatBotResponse: "",
-  };
+  constructor() {
+    super()
+    this.state = {
+      userMessage: "",
+      chat: [],
+      chatBotResponse: "",
+    };
+  }
 
   handleSubmit = async (e) => {
     if (e.key === "Enter") {
       if (this.state.userMessage) {
         e.preventDefault();
+
+        //adding user chat message to the chat state.
         await this.setState({
           chat: this.state.chat.concat({
             sender: "user",
@@ -21,25 +26,38 @@ class ChatBot extends Component {
           }),
           userMessage: "",
         });
+
         let result = this.createFunctionExpression(
           this.props.code,
           this.state.chat[this.state.chat.length - 1].value
         );
+
+        // adding bot loader to the chat state
         await this.setState({
           chat: this.state.chat.concat({ sender: "bot", value: "..." }),
         });
-        console.log("here");
+
         let response = await axios.post(
           "https://shrouded-oasis-94153.herokuapp.com/",
           {
             code: result,
           }
         );
+
         let newChat = this.state.chat;
         newChat.pop();
+
+        // remove bot loader from the chat state
         await this.setState({ chat: newChat });
+
+        // adding bot response to the chat state
         await this.setState({
-          chat: this.state.chat.concat({ sender: "bot", value: response.data }),
+          chat: this.state.chat.concat({
+            sender: "bot",
+            value: response.data
+              ? response.data
+              : "Sorry, but i don't know the answer.",
+          }),
         });
       }
     }
@@ -55,10 +73,13 @@ class ChatBot extends Component {
         this.slice(start + Math.abs(delCount))
       );
     };
+
     let startIndexOfFunc = code.indexOf("function");
     code = code.splice(startIndexOfFunc, 0, "(");
+
     let endIndexOfFunc = code.lastIndexOf("}");
     code = code.splice(endIndexOfFunc + 1, 0, `)('${param}')`);
+
     return code;
   };
 
@@ -66,7 +87,7 @@ class ChatBot extends Component {
     const { chat } = this.state;
     return (
       <div className="chatBot">
-        <div className="container">
+        <div className="chatBotContainer mb-3">
           <Chat chat={chat} />
         </div>
         <div>

@@ -14,15 +14,19 @@ class Chat extends Component {
   componentDidUpdate() {
     this.scrollToBottom();
   }
+  
   render() {
     return (
       <ul className="chat">
         {this.props.chat.map((message, i) => (
           <Message value={message.value} sender={message.sender} key={i} />
         ))}
-        <div style={{ float:"left", clear: "both" }}
-             ref={(el) => { this.messagesEnd = el; }}>
-        </div>
+        <div
+          style={{ float: "left", clear: "both" }}
+          ref={(el) => {
+            this.messagesEnd = el;
+          }}
+        ></div>
       </ul>
     );
   }
